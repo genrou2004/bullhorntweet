@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html     xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="base::Mena">
+    <meta charset="utf-8" />
+    <title>Tweet</title>
+
+</head>
+<body>
+<nav class="navbar navbar-default" th:replace="base::navi"></nav>
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <br /><br /><br />
+            <h4> Tweet Here</h4>
+            <form action="#" th:action="@{/tweet}" enctype="multipart/form-data" th:object="${messaging}" method="post">
+
+               <div><textarea th:field="*{message}" rows="4" cols="50" placeholder="Say Something"></textarea></div>
+
+                <div class="col-xs-4">
+                    <label >Upload Image</label>
+                    <input type="file" name="file" />
+                </div>
+
+
+                <div class="col-md-2">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Tweet</button></div>
+
+            </form>
+
+        </div><!-- /.container -->
+        <th:block th:replace="base :: footlinks"></th:block>
+    </div></div>
+</body>
+</html>

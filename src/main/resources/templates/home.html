@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="base::Mena">
+
+    <meta charset="UTF-8" />
+    <title>Home</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default" th:replace="base::navi"></nav>
+
+<div class="container">
+    <br /><br />
+    <div class="container">
+
+        <!-- Example row of columns -->
+        <div class="row">
+
+            <div class="col-md-3">
+                <div th:if="${param.error}">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <form th:action="@{/login}" th:object="${user}" method="post">
+                    <h3 style="font-family: 'Sansation'; font-size: 30px;color:#006699" > Login</h3>
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="text" name= "username" id="inputEmail" class="form-control" placeholder="Email address" />
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" />
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me" /> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+            </div>
+            <h3 style="font-family: 'Sansation'; font-size: 30px;color:#006699" > Register Here</h3>
+            <div class="col-md-4">
+                <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
+
+                    <label for="inputEmail" class="sr-only">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Full Name" th:field="*{fullName}" />
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" th:field="*{email}" />
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" th:field="*{username}" />
+                    <label for="inputEmail" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}" />
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                </form></div>
+        </div>
+
+
+
+    </div><!-- /.container -->
+
+    <th:block th:replace="base :: footlinks"></th:block>
+</div>
+</div>
+</body>
+</html>
